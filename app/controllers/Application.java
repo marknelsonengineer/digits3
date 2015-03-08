@@ -1,3 +1,11 @@
+/**
+ * The Controller leg for this Model-View-Controller application.
+ *
+ * @author Mark Nelson
+ * @since 6.0
+ * @see https://www.playframework.com
+ */
+
 package controllers;
 
 import play.mvc.Controller;
@@ -7,6 +15,7 @@ import views.html.Contact;
 import views.html.Home;
 import views.html.Page1;
 import views.html.Page2;
+
 
 /**
  * Controllers for the application.
