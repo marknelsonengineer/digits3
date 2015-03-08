@@ -7,31 +7,34 @@ Custom ICS Play-Bootstrap
 
 This is a custom version of the Play Framework's default template.  It starts with activator new and 'play-java'.  The code is then modified to:
 
-  * Conforms to the ICS software engineering coding standards.
+  * Conform to the ICS software engineering coding standards.
 
-  * Illustrates how to incorporate Twitter Bootstrap 3 into Play.
+  * Illustrate how to incorporate Twitter Bootstrap 3 into Play.
 
-  * Contains 5 basic pages (Home, Page 1, Page 2, About and Contact) w/ navigation.
+  * Contain 5 basic pages (Home, Page 1, Page 2, About and Contact) w/ navigation.
 
-  * Integrates Google Fonts.
+  * The navigation has its own Scala class in order to facilitate themed property pages without navigation.
 
-  * Integrates the Bootswatch theme Slate.
+  * Integrate Google Fonts (unused).
+
+  * Utilize the Bootswatch theme Slate.
 
 
 ## Usage
 
 To use it, first create an empty GitHub repo and clone to your desktop.
 
-Next, cd into your new repo and set ics-play-bootstrap as the upstream master:
+Next, cd into your new repo and set clean-play-java2 as the upstream master:
 
     git remote add upstream https://github.com/ics613s15/ics-play-bootstrap.git
+    git remote add upstream https://github.com/marknelsonengineer/clean-play-java2.git
 
 Next, merge the contents of ics-play-bootstrap into your new empty repo:
 
     git fetch upstream
     git merge upstream/master
 
-Now your repo will contain the ics-play-bootstrap repo.
+Now your repo will contain the clean-play-java2 repo.
 
 Edit the build.sbt file to change the name to your new project.
 

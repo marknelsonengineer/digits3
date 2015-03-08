@@ -25,6 +25,8 @@ public class IntegrationTest {
       public void invoke(TestBrowser browser) {
         browser.goTo("http://localhost:3333");
         assertThat(browser.pageSource()).contains("bootstrap.min.js");
+
+        //TODO:  Add the other pages
       }
     });
   }
