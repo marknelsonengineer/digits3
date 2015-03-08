@@ -7,6 +7,11 @@
  * @see https://www.playframework.com
  */
 
+/*
+ * This may throw some errors when run in IntelliJ, but the tests pass.  TestBrowser is having trouble
+ * getting the javascript file.
+ */
+
 package test;
 
 import org.junit.Test;

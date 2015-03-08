@@ -59,9 +59,20 @@ ics-play-bootstrap provides the following features:
 
   * Support for simple tests.
 
+  * Fixed problems with Integration tests missing libraries and being unable to run in IntelliJ.
+
+  * Configure .gitignore file.
+
+  * Created Package-info files.
+
+  
+
 
 ## Version information
 
-Updated March 7, 2015
-Play 2.3.8, Scala 2.11.1, Bootstrap 3.3.2, Activator 1.3.2
+  * Updated March 7, 2015
+  * Play 2.3.8
+  * Scala 2.11.1
+  * Bootstrap 3.3.2
+  * Activator 1.3.2
 
