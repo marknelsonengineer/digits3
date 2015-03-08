@@ -65,7 +65,7 @@ ics-play-bootstrap provides the following features:
 
   * Created Package-info files.
 
-  
+
 
 
 ## Version information
