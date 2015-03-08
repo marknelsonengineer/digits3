@@ -1,23 +1,24 @@
 Custom ICS Play-Bootstrap
 =================================
 
-# Custom ICS Play-Bootstrap
-
 <img src="sample-page.png" width="500px"/>
 
 ## Overview
 
-This is a custom version of the Activator 'play-java' template system which:
+This is a custom version of the Play Framework's default template.  It starts with activator new and 'play-java'.  The code is then modified to:
 
-  * Conforms to the ICS software engineering coding standards
+  * Conforms to the ICS software engineering coding standards.
 
   * Illustrates how to incorporate Twitter Bootstrap 3 into Play.
 
-  * Contains 5 basic pages (Home, Page 1, Page 2, About and Contact) w/ navigation
+  * Contains 5 basic pages (Home, Page 1, Page 2, About and Contact) w/ navigation.
 
-  * Integrates Google Fonts
+  * Integrates Google Fonts.
 
-  * Integrates the Slate theme from Bootswatch
+  * Integrates the Bootswatch theme Slate.
+
+
+## Usage
 
 To use it, first create an empty GitHub repo and clone to your desktop.
 
@@ -34,7 +35,7 @@ Now your repo will contain the ics-play-bootstrap repo.
 
 Edit the build.sbt file to change the name to your new project.
 
-## Features
+## Detailed Features
 
 ics-play-bootstrap provides the following features:
 
