@@ -3,6 +3,7 @@
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
+## Directory-based project format:
 
 # User-specific stuff:
 .idea/workspace.xml

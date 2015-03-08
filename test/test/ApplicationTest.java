@@ -23,14 +23,51 @@ public class ApplicationTest {
     assertThat(a).isEqualTo(2);
   }
 
+
   /**
-   * Exercise rendering the index page.
+   * Exercise rendering the Home page.  Specifically, make sure that content passed into render appears on the page.
    */
   @Test
   public void renderTemplate() {
-    Content html = views.html.index.render("Your new application is ready.");
+    Content html = views.html.Home.render("Your new application is ready.");
     assertThat(contentType(html)).isEqualTo("text/html");
     assertThat(contentAsString(html)).contains("Your new application is ready.");
+  }
+
+
+  /**
+   * Ensure Bootstrap is properly configured.
+   */
+  @Test
+  public void renderBootstrapTest() {
+    Content html = views.html.Home.render("Your new application is ready.");
+    assertThat(contentAsString(html)).contains("bootstrap.min.css");  // TODO: Make sure the URL targets are good.
+    assertThat(contentAsString(html)).contains("jquery.min.js");
+    assertThat(contentAsString(html)).contains("bootstrap.min.js");
+  }
+
+
+  /**
+   * Ensure Google Fonts are available.
+   */
+  @Test
+  public void renderGoogleFontsTest() {
+    Content html = views.html.Home.render("Your new application is ready.");
+    assertThat(contentAsString(html)).contains("fonts.googleapis.com");  // TODO: Make sure the URL targets are good.
+  }
+
+
+  /**
+   * Ensure the navigation bar is fully reperesented.
+   */
+  @Test
+  public void renderNavbarTest() {
+    Content html = views.html.Home.render("Your new application is ready.");
+    assertThat(contentAsString(html)).contains("<a href=\"/\">Home</a>");
+    assertThat(contentAsString(html)).contains("<a href=\"/page1\">Page 1</a>");
+    assertThat(contentAsString(html)).contains("<a href=\"/page2\">Page 2</a>");
+    assertThat(contentAsString(html)).contains("<a href=\"/about\">About</a>");
+    assertThat(contentAsString(html)).contains("<a href=\"/contact\">Contact</a>");
   }
 
 }
