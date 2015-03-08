@@ -1,3 +1,12 @@
+/**
+ * Unit tests for the Application.
+ *
+ * @author Mark Nelson
+ * @since 6.0
+ * @see http://junit.org
+ * @see https://www.playframework.com
+ */
+
 package test;
 
 import org.junit.Test;
@@ -41,7 +50,7 @@ public class ApplicationTest {
   @Test
   public void renderBootstrapTest() {
     Content html = views.html.Home.render("Your new application is ready.");
-    assertThat(contentAsString(html)).contains("bootstrap.min.css");  // TODO: Make sure the URL targets are good.
+    assertThat(contentAsString(html)).contains("bootstrap.min.css");  // To Do: Make sure the URL targets are good.
     assertThat(contentAsString(html)).contains("jquery.min.js");
     assertThat(contentAsString(html)).contains("bootstrap.min.js");
   }
@@ -53,12 +62,12 @@ public class ApplicationTest {
   @Test
   public void renderGoogleFontsTest() {
     Content html = views.html.Home.render("Your new application is ready.");
-    assertThat(contentAsString(html)).contains("fonts.googleapis.com");  // TODO: Make sure the URL targets are good.
+    assertThat(contentAsString(html)).contains("fonts.googleapis.com");  // To Do: Make sure the URL targets are good.
   }
 
 
   /**
-   * Ensure the navigation bar is fully reperesented.
+   * Ensure the navigation bar is fully represented.
    */
   @Test
   public void renderNavbarTest() {
