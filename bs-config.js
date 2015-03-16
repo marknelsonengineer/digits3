@@ -46,7 +46,7 @@ module.exports = {
     "notify": true,
     "scrollProportionally": true,
     "scrollThrottle": 0,
-    "reloadDelay": 1000,
+    "reloadDelay": 3000,
     "injectChanges": true,
     "startPath": null,
     "minify": true,
