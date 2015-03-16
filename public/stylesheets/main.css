@@ -9,3 +9,9 @@ body {
 .navbar-nav > li.active {
   background-image: linear-gradient(rgb(49, 53, 57), rgb(58, 63, 68) 60%, rgb(72, 78, 85));
 }
+
+.navbar-toggle .icon-bar {  /* To Do:  Get the box to appear around the pill */
+  background-color: rgb(10, 12, 12 );
+  height: 2px;
+  width: 22px;
+}
