@@ -20,6 +20,7 @@
           <td>@contact.getLastName</td>
           <td>@contact.getPhone</td>
           <td><a href="@routes.Application.newContact(contact.getId())">edit</a></td>
+          <td><a href="@routes.Application.deleteContact(contact.getId())">delete</a></td>
         </tr>
       }
     </table>

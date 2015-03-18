@@ -32,6 +32,11 @@ public class Application extends Controller {
     return ok(Home.render("Home page successful.", ContactDB.getContacts()));
   }
 
+  public static Result deleteContact(long id) {
+    ContactDB.deleteContact(id);
+
+    return ok(Home.render("Deleted contact.", ContactDB.getContacts()));
+  }
 
   /**
    * New contact page for the application.
