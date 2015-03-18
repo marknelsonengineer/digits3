@@ -46,10 +46,16 @@ public class Application extends Controller {
   /**
    * Process an HTTP POST method on the NewContact page.
    *
-   * @return HTTP OK with page content.
+   * @return HTTP OK with page content if the page passes validation -- OR -- HTTP badRequest if the page
+   * fails validation.
    */
   public static Result postNewContact() {
     Form<ContactFormData> contactForm = Form.form(ContactFormData.class).bindFromRequest();
+
+    if (contactForm.hasErrors()) {
+      System.out.printf("Error in newContact page.\n");
+      return badRequest(NewContact.render("Error in newContact page.", contactForm));
+    }
 
     ContactFormData contact = contactForm.get();
 
