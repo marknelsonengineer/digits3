@@ -8,6 +8,7 @@
 
 package controllers;
 
+import models.Contact;
 import models.ContactDB;
 import play.data.Form;
 import play.mvc.Controller;
@@ -35,12 +36,22 @@ public class Application extends Controller {
   /**
    * New contact page for the application.
    *
+   * @param id The ID number to create or edit.
    * @return HTTP OK with page content.
    */
-  public static Result newContact() {
-    Form<ContactFormData> contact = Form.form(ContactFormData.class);
+  public static Result newContact(long id) {
+    ContactFormData contactFormData = null;
 
-    return ok(NewContact.render("New contact page successful.", contact));
+    if (id == 0) {
+      contactFormData = new ContactFormData();
+    }
+    else {
+      contactFormData = new ContactFormData(ContactDB.getContact(id));
+    }
+
+    Form<ContactFormData> contactForm = Form.form(ContactFormData.class).fill(contactFormData);
+
+    return ok(NewContact.render("New contact page successful.", contactForm));
   }
 
 
@@ -58,14 +69,22 @@ public class Application extends Controller {
       return badRequest(NewContact.render("Error in newContact page.", contactForm));
     }
 
-    ContactFormData contact = contactForm.get();
+    ContactFormData contactFormData = contactForm.get();
 
-    ContactDB.newContactDB(contact);
+    System.out.printf("Data from the New Contact HTTP Form ::");
+    System.out.printf("  ID: [%d]", contactFormData.id);
+    System.out.printf("  First: [%s]", contactFormData.firstName);
+    System.out.printf("  Last: [%s]", contactFormData.lastName);
+    System.out.printf("  Phone: [%s]", contactFormData.phone);
+    System.out.printf("\n");
 
-    System.out.printf("New Contact entered ::");
-    System.out.printf("  First: [%s]", contact.firstName);
-    System.out.printf("  Last: [%s]", contact.lastName);
-    System.out.printf("  Phone: [%s]", contact.phone);
+    Contact contact = ContactDB.newContactDB(contactFormData);
+
+    System.out.printf("Data from the New Contact object ::");
+    System.out.printf("  ID: [%d]", contact.getId());
+    System.out.printf("  First: [%s]", contact.getFirstName());
+    System.out.printf("  Last: [%s]", contact.getLastName());
+    System.out.printf("  Phone: [%s]", contact.getPhone());
     System.out.printf("\n");
 
     return ok(NewContact.render("New contact page successful.", contactForm));

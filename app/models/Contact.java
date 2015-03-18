@@ -4,6 +4,7 @@ package models;
  * A single contact.
  */
 public class Contact {
+  private long id;
   private String firstName;
   private String lastName;
   private String phone;
@@ -11,14 +12,25 @@ public class Contact {
   /**
    * Create a new contact.
    *
+   * @param id        The ID number.
    * @param firstName The first name.
-   * @param lastName The last name.
-   * @param phone The phone number.
+   * @param lastName  The last name.
+   * @param phone     The phone number.
    */
-  public Contact(String firstName, String lastName, String phone) {
+  public Contact(long id, String firstName, String lastName, String phone) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
+  }
+
+  /**
+   * Get the contact's unique ID.
+   *
+   * @return A unique ID number for this contact.
+   */
+  public long getId() {
+    return id;
   }
 
   /**

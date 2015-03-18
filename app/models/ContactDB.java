@@ -3,14 +3,35 @@ package models;
 import views.formdata.ContactFormData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * In-Memory, non persistent container for the application's contacts.
  */
 public class ContactDB {
 
-  private static List<Contact> contacts = new ArrayList<Contact>();
+  private static Map<Long, Contact> contacts = new HashMap<Long, Contact>();
+  private static long nextId = 1;  // Hold the next available ID number.
+
+
+  /**
+   * Find and return a Contact based on ID.
+   *
+   * @param id An ID number to search for.
+   * @return A contact for that ID number or throw an exception if a contact is not found.
+   */
+  public static Contact getContact(long id) {
+    Contact contact = contacts.get(new Long(id));
+
+    if (contact == null) {
+      throw new RuntimeException("Attempt to find an unknown contact ID.");
+    }
+
+    return contact;
+  }
+
 
   /**
    * Add a Contact object to the ContactDB database.
@@ -19,9 +40,16 @@ public class ContactDB {
    * @return The new contact.
    */
   public static Contact newContactDB(ContactFormData formContact) {
-    Contact contact = new Contact(formContact.firstName, formContact.lastName, formContact.phone);
+    Contact contact = null;
 
-    contacts.add(contact);
+    if (formContact.id == 0) {
+      contact = new Contact(nextId++, formContact.firstName, formContact.lastName, formContact.phone);
+    }
+    else {
+      contact = new Contact(formContact.id, formContact.firstName, formContact.lastName, formContact.phone);
+    }
+
+    contacts.put(contact.getId(), contact);
 
     return contact;
   }
@@ -32,6 +60,6 @@ public class ContactDB {
    * @return All contacts known to the application.
    */
   public static List<Contact> getContacts() {
-    return contacts;
+    return new ArrayList<>(contacts.values());
   }
 }
