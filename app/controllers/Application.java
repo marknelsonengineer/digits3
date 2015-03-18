@@ -8,6 +8,7 @@
 
 package controllers;
 
+import models.ContactDB;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -27,7 +28,7 @@ public class Application extends Controller {
    * @return HTTP OK with page content.
    */
   public static Result home() {
-    return ok(Home.render("Home page successful."));
+    return ok(Home.render("Home page successful.", ContactDB.getContacts()));
   }
 
 
@@ -58,6 +59,8 @@ public class Application extends Controller {
     }
 
     ContactFormData contact = contactForm.get();
+
+    ContactDB.newContactDB(contact);
 
     System.out.printf("New Contact entered ::");
     System.out.printf("  First: [%s]", contact.firstName);
