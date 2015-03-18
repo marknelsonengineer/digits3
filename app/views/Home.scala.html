@@ -3,7 +3,7 @@
 *
 * @param message A status message from the controller.
 *@
-@(message: String)
+@(message: String)(contacts: List[Contact])
 
 @Main("Digits") {
 
@@ -13,15 +13,12 @@
       <tr>
         <th>First</th> <th>Last</th> <th>Phone</th>
       </tr>
-      <tr>
-        <td>Lorem</td> <td>Ipsum</td> <td>808.111.1122</td>
-      </tr>
-      <tr>
-        <td>Sam</td> <td>Nelson</td> <td>808.999.2222</td>
-      </tr>
-      <tr>
-        <td>Janet</td> <td>Soren</td> <td>510.333.3333</td>
-      </tr>
+
+      @for(contact <- contacts) {
+        <tr>
+          <td>@contact.getFirstName</td> <td>@contact.getLastName</td> <td>@contact.getPhone</td>
+        </tr>
+      }
     </table>
   </div>
 }
