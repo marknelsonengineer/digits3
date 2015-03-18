@@ -10,11 +10,8 @@ package controllers;
 
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.About;
-import views.html.Contact;
+import views.html.NewContact;
 import views.html.Home;
-import views.html.Page1;
-import views.html.Page2;
 
 
 /**
@@ -33,42 +30,12 @@ public class Application extends Controller {
 
 
   /**
-   * Page 1 of the application.
+   * New contact page for the application.
    *
    * @return HTTP OK with page content.
    */
-  public static Result page1() {
-    return ok(Page1.render("Page 1 successful."));
-  }
-
-
-  /**
-   * Page 2 of the application.
-   *
-   * @return HTTP OK with page content.
-   */
-  public static Result page2() {
-    return ok(Page2.render("Page 2 successful."));
-  }
-
-
-  /**
-   * The about page for the application.
-   *
-   * @return HTTP OK with page content.
-   */
-  public static Result about() {
-    return ok(About.render("About page successful."));
-  }
-
-
-  /**
-   * Contact page for the application.
-   *
-   * @return HTTP OK with page content.
-   */
-  public static Result contact() {
-    return ok(Contact.render("Contact page successful."));
+  public static Result newContact() {
+    return ok(NewContact.render("New contact page successful."));
   }
 
 }

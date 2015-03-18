@@ -8,15 +8,12 @@
       <sourceFolder url="file://$MODULE_DIR$/../../app" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.11/twirl/main" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.11/twirl/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../conf" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.11/resource_managed/main" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.11/resource_managed/test" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../test/resources" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/../../test" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/resolution-cache" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/streams" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/test-reports" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target/web" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

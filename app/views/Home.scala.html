@@ -5,11 +5,23 @@
 *@
 @(message: String)
 
-@Main("Home") {
+@Main("Digits") {
 
   @MainNavbar("Home")
   <div class="container">
-    <p>The home page.</p>
-    <p>Status:  @message</p>
+    <table class="table table-bordered table-responsive table-striped">
+      <tr>
+        <th>First</th> <th>Last</th> <th>Phone</th>
+      </tr>
+      <tr>
+        <td>Lorem</td> <td>Ipsum</td> <td>808.111.1122</td>
+      </tr>
+      <tr>
+        <td>Sam</td> <td>Nelson</td> <td>808.999.2222</td>
+      </tr>
+      <tr>
+        <td>Janet</td> <td>Soren</td> <td>510.333.3333</td>
+      </tr>
+    </table>
   </div>
 }

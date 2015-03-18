@@ -6,23 +6,26 @@
 *@
 @(pageName: String)
 
+<!-- Heading image -->
+<div id="heading-logo" width="100%">
+  <img class="img-responsive center-block visible-md visible-lg heading-logo-size"
+  src="@routes.Assets.at("images/flourish.jpg")" alt="Flourish">
+</div>
+
 <!-- Responsive navbar -->
-<div class="navbar navbar-fixed-top" role="navigation">
+<div class="navbar" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <!--  Display three horizontal lines when navbar collapsed. -->
         <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand visible-lg visible-md" href="@routes.Application.home()">Never A Dull Moment</a>
+      <a class="navbar-brand visible-lg visible-md" href="@routes.Application.home()">Digits</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="@("active".when(pageName == "Home"))"><a href="@routes.Application.home()">Home</a></li>
-        <li class="@("active".when(pageName == "Page1"))"><a href="@routes.Application.page1()">Page 1</a></li>
-        <li class="@("active".when(pageName == "Page2"))"><a href="@routes.Application.page2()">Page 2</a></li>
-        <li class="@("active".when(pageName == "About"))"><a href="@routes.Application.about()">About</a></li>
-        <li class="@("active".when(pageName == "Contact"))"><a href="@routes.Application.contact()">Contact</a></li>
+        <li class="@("active".when(pageName == "New Contact"))"><a href="@routes.Application.newContact()">New Contact</a></li>
       </ul>
     </div>
   </div>
