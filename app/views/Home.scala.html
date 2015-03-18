@@ -16,7 +16,10 @@
 
       @for(contact <- contacts) {
         <tr>
-          <td>@contact.getFirstName</td> <td>@contact.getLastName</td> <td>@contact.getPhone</td>
+          <td>@contact.getFirstName</td>
+          <td>@contact.getLastName</td>
+          <td>@contact.getPhone</td>
+          <td><a href="@routes.Application.newContact(contact.getId())">edit</a></td>
         </tr>
       }
     </table>

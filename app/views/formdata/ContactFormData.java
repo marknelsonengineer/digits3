@@ -1,5 +1,6 @@
 package views.formdata;
 
+import models.Contact;
 import play.data.validation.ValidationError;
 
 import java.util.ArrayList;
@@ -9,6 +10,9 @@ import java.util.List;
  * Contact HTML form backing class.
  */
 public class ContactFormData {
+
+  /** A unique contact ID. */
+  public long id = 0;
 
   /** The first name. */
   public String firstName = "";
@@ -22,6 +26,24 @@ public class ContactFormData {
   /** The minimum phone number size. */
   public static final int MINIMUM_PHONE_NUMBER_SIZE = 12;
 
+  /**
+   * Create an empty ContactForm.
+   */
+  public ContactFormData() {
+    // No-arg constructor as required by Play.
+  }
+
+  /**
+   * Create a populated ContactForm from a contact object.
+   *
+   * @param contact Populate the form from this object.
+   */
+  public ContactFormData(Contact contact) {
+    this.id = contact.getId();
+    this.firstName = contact.getFirstName();
+    this.lastName = contact.getLastName();
+    this.phone = contact.getPhone();
+  }
 
   /**
    * Validate data entered by the user into the HTML form.
@@ -43,7 +65,7 @@ public class ContactFormData {
       errors.add(new ValidationError("phone", "A phone number is required."));
     }
 
-    if (phone == null || phone.length() <= MINIMUM_PHONE_NUMBER_SIZE) {
+    if (phone == null || phone.length() < MINIMUM_PHONE_NUMBER_SIZE) {
       errors.add(new ValidationError("phone", "The phone number must be " + MINIMUM_PHONE_NUMBER_SIZE + " digits"));
     }
 
