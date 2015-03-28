@@ -19,7 +19,8 @@
           <td>@contact.getFirstName</td>
           <td>@contact.getLastName</td>
           <td>@contact.getPhone</td>
-          <td><a href="@routes.Application.newContact(contact.getId())">edit</a></td>
+          <td><a class="btn btn-warning btn-xs" href="@routes.Application.newContact(contact.getId())">edit</a></td>
+          <td><a class="btn btn-danger btn-xs" href="@routes.Application.deleteContact(contact.getId())">delete</a></td>
         </tr>
       }
     </table>

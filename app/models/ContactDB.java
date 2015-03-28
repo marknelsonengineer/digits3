@@ -15,6 +15,14 @@ public class ContactDB {
   private static Map<Long, Contact> contacts = new HashMap<Long, Contact>();
   private static long nextId = 1;  // Hold the next available ID number.
 
+  /**
+   * Delete a contact from the database.
+   *
+   * @param id The ID to delete.
+   */
+  public static void deleteContact(long id) {
+    contacts.remove(id);
+  }
 
   /**
    * Find and return a Contact based on ID.
