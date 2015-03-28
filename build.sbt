@@ -10,5 +10,6 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  javaWs
+  javaWs,
+  "ws.securesocial" % "securesocial_2.11" % "3.0-M3"
 )
