@@ -48,11 +48,13 @@ public class NewContactPage extends FluentPage {
    * @param firstName The first name.
    * @param lastName The last name.
    * @param phone The phone number.
+   * @param phoneType The type of phone.
    */
-  public void submitForm(String firstName, String lastName, String phone) {
+  public void submitForm(String firstName, String lastName, String phone, String phoneType) {
     fill("#firstName").with(firstName);
     fill("#lastName").with(lastName);
     fill("#phone").with(phone);
+    fill("#phoneType").with(phoneType);
     submit("#submit");
   }
 

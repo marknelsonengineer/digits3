@@ -68,12 +68,14 @@ public class IntegrationTest {
         String firstName = "George";
         String lastName = "Washington";
         String phone = "+1 (212) 555-1212";
+        String phoneType = "Work";
 
-        newContactPage.submitForm(firstName, lastName, phone);
+        newContactPage.submitForm(firstName, lastName, phone, phoneType);
 
         assertThat(browser.pageSource()).contains(firstName);
         assertThat(browser.pageSource()).contains(lastName);
         assertThat(browser.pageSource()).contains(phone);
+        assertThat(browser.pageSource()).contains(phoneType);
 
         assertThat(browser.pageSource()).contains("Digits");
       }

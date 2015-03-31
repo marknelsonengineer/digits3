@@ -3,10 +3,11 @@
 *
 * @param message A status message from the controller.
 *@
-@(message: String)(contact: Form[views.formdata.ContactFormData])
+@(message: String)(contact: Form[views.formdata.ContactFormData])(telephoneType: Map[String,Boolean])
 
-@import views.html.bootstrap3._
-@import views.html.helper._
+@import views.html.bootstrap3.select
+@import views.html.bootstrap3.text
+@import views.html.helper.form
 
 @Main("Digits") {
 
@@ -30,6 +31,11 @@
     @text(contact("phone"),
       label = "Phone",
       placeholder = "Phone")
+
+    @select(contact("phoneType"),
+      label = "Phone Type",
+      optionMap = telephoneType,
+      isMultiple = false)
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
