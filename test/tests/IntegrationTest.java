@@ -2,9 +2,9 @@
  * Use a simulated browser to exercise the results from page requests.
  *
  * @author Mark Nelson
- * @since 6.0
  * @see http://junit.org
  * @see https://www.playframework.com
+ * @since 6.0
  */
 
 /*
@@ -12,11 +12,13 @@
  * getting the javascript file.
  */
 
-package test;
+package tests;
 
 import org.junit.Test;
 import play.libs.F.Callback;
 import play.test.TestBrowser;
+import tests.pages.HomePage;
+import tests.pages.NewContactPage;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static play.test.Helpers.HTMLUNIT;
@@ -31,18 +33,21 @@ import static play.test.Helpers.testServer;
  * page-to-page flow.
  */
 public class IntegrationTest {
+  /**
+   * The port to be used for testing.
+   */
+  private final int port = 3333;
 
   /**
    * Check if the home page is shown.
    */
   @Test
   public void testHome() {
-    running(testServer(3333, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
+    running(testServer(port, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
       public void invoke(TestBrowser browser) {
-        browser.goTo("http://localhost:3333");
-        assertThat(browser.pageSource()).contains("Digits");
-
-        browser.goTo("http://localhost:3333/");
+        browser.maximizeWindow();
+        HomePage homePage = new HomePage(browser.getDriver(), port);
+        browser.goTo(homePage);
         assertThat(browser.pageSource()).contains("Digits");
       }
     });
@@ -54,9 +59,22 @@ public class IntegrationTest {
    */
   @Test
   public void testNewContact() {
-    running(testServer(3333, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
+    running(testServer(port, fakeApplication(inMemoryDatabase())), HTMLUNIT, new Callback<TestBrowser>() {
       public void invoke(TestBrowser browser) {
-        browser.goTo("http://localhost:3333/newcontact");
+        browser.maximizeWindow();
+        NewContactPage newContactPage = new NewContactPage(browser.getDriver(), port);
+        browser.goTo(newContactPage);
+
+        String firstName = "George";
+        String lastName = "Washington";
+        String phone = "+1 (212) 555-1212";
+
+        newContactPage.submitForm(firstName, lastName, phone);
+
+        assertThat(browser.pageSource()).contains(firstName);
+        assertThat(browser.pageSource()).contains(lastName);
+        assertThat(browser.pageSource()).contains(phone);
+
         assertThat(browser.pageSource()).contains("Digits");
       }
     });
