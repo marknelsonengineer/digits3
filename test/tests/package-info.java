@@ -7,4 +7,4 @@
  * @see https://www.playframework.com
  */
 
-package test;
+package tests;
