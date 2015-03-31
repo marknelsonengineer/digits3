@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 /**
  * A single contact.
  */
@@ -8,20 +10,23 @@ public class Contact {
   private String firstName;
   private String lastName;
   private String phone;
+  private List<String> dietPreferences;
 
   /**
    * Create a new contact.
    *
-   * @param id        The ID number.
-   * @param firstName The first name.
-   * @param lastName  The last name.
-   * @param phone     The phone number.
+   * @param id              The ID number.
+   * @param firstName       The first name.
+   * @param lastName        The last name.
+   * @param phone           The phone number.
+   * @param dietPreferences The dietary preferences.
    */
-  public Contact(long id, String firstName, String lastName, String phone) {
+  public Contact(long id, String firstName, String lastName, String phone, List<String> dietPreferences) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
+    this.dietPreferences = dietPreferences;
   }
 
   /**
@@ -43,6 +48,7 @@ public class Contact {
   }
 
   /**
+
    * Get the contact's last name.
    *
    * @return The last name.
@@ -59,4 +65,14 @@ public class Contact {
   public String getPhone() {
     return phone;
   }
+
+  /**
+   * Get the dietary preferences.
+   *
+   * @return A list of dietary preferences.
+   */
+  public List<String> getDietPreferences() {
+    return dietPreferences;
+  }
+
 }

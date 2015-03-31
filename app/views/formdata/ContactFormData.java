@@ -23,6 +23,9 @@ public class ContactFormData {
   /** The phone number. */
   public String phone = "";
 
+  /** A set of dietary preferences. */
+  public List<String> dietPreferences = new ArrayList<String>();
+
   /** The minimum phone number size. */
   public static final int MINIMUM_PHONE_NUMBER_SIZE = 12;
 
@@ -43,6 +46,7 @@ public class ContactFormData {
     this.firstName = contact.getFirstName();
     this.lastName = contact.getLastName();
     this.phone = contact.getPhone();
+    this.dietPreferences = contact.getDietPreferences();
   }
 
   /**

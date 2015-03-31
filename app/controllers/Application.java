@@ -87,6 +87,7 @@ public class Application extends Controller {
     System.out.printf("  First: [%s]", contactFormData.firstName);
     System.out.printf("  Last: [%s]", contactFormData.lastName);
     System.out.printf("  Phone: [%s]", contactFormData.phone);
+    // TODO:  Print out diet
     System.out.printf("\n");
 
     Contact contact = ContactDB.newContactDB(contactFormData);
@@ -96,6 +97,7 @@ public class Application extends Controller {
     System.out.printf("  First: [%s]", contact.getFirstName());
     System.out.printf("  Last: [%s]", contact.getLastName());
     System.out.printf("  Phone: [%s]", contact.getPhone());
+    // TODO:  Print out diet
     System.out.printf("\n");
 
     return ok(NewContact.render("New contact page successful.", contactForm));

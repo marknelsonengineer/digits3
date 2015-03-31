@@ -11,7 +11,7 @@
   <div class="container">
     <table class="table table-bordered table-responsive table-striped">
       <tr>
-        <th>First</th> <th>Last</th> <th>Phone</th>
+        <th>First</th> <th>Last</th> <th>Phone</th> <th>Diet</th>
       </tr>
 
       @for(contact <- contacts) {
@@ -19,6 +19,9 @@
           <td>@contact.getFirstName</td>
           <td>@contact.getLastName</td>
           <td>@contact.getPhone</td>
+          <td>@for(diet <- contact.getDietPreferences) {
+            @((diet) + " ")
+          }</td>
           <td><a class="btn btn-warning btn-xs" href="@routes.Application.newContact(contact.getId())">edit</a></td>
           <td><a class="btn btn-danger btn-xs" href="@routes.Application.deleteContact(contact.getId())">delete</a></td>
         </tr>
