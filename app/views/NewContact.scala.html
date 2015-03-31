@@ -5,6 +5,7 @@
 *@
 @(message: String)(contact: Form[views.formdata.ContactFormData])
 
+@import views.html.bootstrap3._
 @import views.html.helper._
 
 @Main("Digits") {
@@ -18,50 +19,17 @@
     id="@contact("id").id"
     value="@contact("id").value">
 
-    <div class="form-group @if(contact("firstName").hasErrors) {has-error}">
-      <label for="inputFirst" class="col-sm-2 control-label">First</label>
-      <div class="col-sm-10">
-        <input type="text"
-        class="form-control"
-        name="@contact("firstName").name"
-        id="@contact("firstName").id"
-        value="@contact("firstName").value"
-        placeholder="First">
-        <span class="help-block">@{
-          contact("firstName").error.map { error => error.message }
-        }</span>
-      </div>
-    </div>
+    @text(contact("firstName"),
+      label = "First",
+      placeholder = "First")
 
-    <div class="form-group @if(contact("lastName").hasErrors) {has-error}">
-      <label for="inputLast" class="col-sm-2 control-label">Last</label>
-      <div class="col-sm-10">
-        <input type="text"
-        class="form-control"
-        name="@contact("lastName").name"
-        id="@contact("lastName").id"
-        value="@contact("lastName").value"
-        placeholder="Last">
-        <span class="help-block">@{
-          contact("lastName").error.map { error => error.message }
-        }</span>
-      </div>
-    </div>
+    @text(contact("lastName"),
+      label = "Last",
+      placeholder = "Last")
 
-    <div class="form-group @if(contact("phone").hasErrors) {has-error}">
-      <label for="inputDigits" class="col-sm-2 control-label">Phone</label>
-      <div class="col-sm-10">
-        <input type="text"
-        class="form-control"
-        name="@contact("phone").name"
-        id="@contact("phone").id"
-        value="@contact("phone").value"
-        placeholder="Phone">
-        <span class="help-block">@{
-          contact("phone").error.map { error => error.message }
-        }</span>
-      </div>
-    </div>
+    @text(contact("phone"),
+      label = "Phone",
+      placeholder = "Phone")
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
