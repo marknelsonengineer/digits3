@@ -1,0 +1,43 @@
+@(phoneNumberField: Field,
+    phoneTypeField: Field,
+    label: String = "CHANGEME",
+    placeholder: String = "",
+    optionMap: Map[String, Boolean],
+    phoneNumberHelp: String = "",
+    phoneTypeHelp: String = "")
+
+<div class="form-group @if(phoneNumberField.hasErrors) {has-error} @if(phoneTypeField.hasErrors) {has-error}">
+  <label class="col-sm-2 control-label">@label</label>
+  <div class="col-sm-6">
+    <input type="text"
+    class="form-control"
+    id="@phoneNumberField.id"
+    name="@phoneNumberField.name"
+    value="@phoneNumberField.value.getOrElse("")"
+    placeholder="@placeholder" />
+    <span class="help-block">@phoneNumberHelp</span>
+    <span class="help-block">@{
+      phoneNumberField.error.map { error => error.message }
+    }</span>
+  </div>
+
+  <div class="col-sm-4">
+    <select
+    class="form-control"
+    id="@phoneTypeField.id"
+    name="@phoneTypeField.name"
+    >
+      <option class="blank" value="">Please select a value</option>
+
+      @for((optionName, isSelected) <- optionMap) {
+        <option id="@optionName" value="@optionName" @if(isSelected) {selected}>@optionName </option>
+      }
+
+    </select>
+    <span class="help-block">@phoneTypeHelp</span>
+    <span class="help-block">@{
+      phoneTypeField.error.map { error => error.message }
+    }</span>
+  </div>
+
+</div>
