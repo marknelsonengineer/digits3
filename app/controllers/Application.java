@@ -14,8 +14,11 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.formdata.ContactFormData;
+import views.formdata.TelephoneType;
 import views.html.NewContact;
 import views.html.Home;
+
+import java.util.Map;
 
 
 /**
@@ -52,17 +55,20 @@ public class Application extends Controller {
    */
   public static Result newContact(long id) {
     ContactFormData contactFormData = null;
+    Map<String, Boolean> telephoneType = null;
 
     if (id == 0) {
       contactFormData = new ContactFormData();
+      telephoneType = TelephoneType.getTelephoneTypes();
     }
     else {
       contactFormData = new ContactFormData(ContactDB.getContact(id));
+      telephoneType = TelephoneType.getTelephoneTypes(ContactDB.getContact(id).getPhoneType());
     }
 
     Form<ContactFormData> contactForm = Form.form(ContactFormData.class).fill(contactFormData);
 
-    return ok(NewContact.render("New contact page successful.", contactForm));
+    return ok(NewContact.render("New contact page successful.", contactForm, telephoneType));
   }
 
 
@@ -74,10 +80,11 @@ public class Application extends Controller {
    */
   public static Result postNewContact() {
     Form<ContactFormData> contactForm = Form.form(ContactFormData.class).bindFromRequest();
+    Map<String, Boolean> telephoneType = TelephoneType.getTelephoneTypes();
 
     if (contactForm.hasErrors()) {
       System.out.printf("Error in newContact page.\n");
-      return badRequest(NewContact.render("Error in newContact page.", contactForm));
+      return badRequest(NewContact.render("Error in newContact page.", contactForm, telephoneType));
     }
 
     ContactFormData contactFormData = contactForm.get();
@@ -87,6 +94,7 @@ public class Application extends Controller {
     System.out.printf("  First: [%s]", contactFormData.firstName);
     System.out.printf("  Last: [%s]", contactFormData.lastName);
     System.out.printf("  Phone: [%s]", contactFormData.phone);
+    System.out.printf("  Phone Type: [%s]", contactFormData.phoneType);
     System.out.printf("\n");
 
     Contact contact = ContactDB.newContactDB(contactFormData);
@@ -96,8 +104,9 @@ public class Application extends Controller {
     System.out.printf("  First: [%s]", contact.getFirstName());
     System.out.printf("  Last: [%s]", contact.getLastName());
     System.out.printf("  Phone: [%s]", contact.getPhone());
+    System.out.printf("  Phone Type: [%s]", contact.getPhoneType());
     System.out.printf("\n");
 
-    return ok(NewContact.render("New contact page successful.", contactForm));
+    return ok(Home.render("Added new contact.", ContactDB.getContacts()));
   }
 }

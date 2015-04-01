@@ -51,10 +51,18 @@ public class ContactDB {
     Contact contact = null;
 
     if (formContact.id == 0) {
-      contact = new Contact(nextId++, formContact.firstName, formContact.lastName, formContact.phone);
+      contact = new Contact(nextId++
+          , formContact.firstName
+          , formContact.lastName
+          , formContact.phone
+          , formContact.phoneType);
     }
     else {
-      contact = new Contact(formContact.id, formContact.firstName, formContact.lastName, formContact.phone);
+      contact = new Contact(formContact.id
+          , formContact.firstName
+          , formContact.lastName
+          , formContact.phone
+          , formContact.phoneType);
     }
 
     contacts.put(contact.getId(), contact);

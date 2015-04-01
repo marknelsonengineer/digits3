@@ -23,6 +23,9 @@ public class ContactFormData {
   /** The phone number. */
   public String phone = "";
 
+  /** The phone type. */
+  public String phoneType = "";
+
   /** The minimum phone number size. */
   public static final int MINIMUM_PHONE_NUMBER_SIZE = 12;
 
@@ -43,6 +46,7 @@ public class ContactFormData {
     this.firstName = contact.getFirstName();
     this.lastName = contact.getLastName();
     this.phone = contact.getPhone();
+    this.phoneType = contact.getPhoneType();
   }
 
   /**
@@ -67,6 +71,10 @@ public class ContactFormData {
 
     if (phone == null || phone.length() < MINIMUM_PHONE_NUMBER_SIZE) {
       errors.add(new ValidationError("phone", "The phone number must be " + MINIMUM_PHONE_NUMBER_SIZE + " digits"));
+    }
+
+    if (phoneType == null || !TelephoneType.isValidType(phoneType)) {
+      errors.add(new ValidationError("phoneType", "A phone type must be selected."));
     }
 
     return errors.isEmpty() ? null : errors;
