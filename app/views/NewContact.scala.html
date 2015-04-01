@@ -7,6 +7,7 @@
 
 @import views.html.bootstrap3.select
 @import views.html.bootstrap3.text
+@import views.html.bootstrap3.telephone
 @import views.html.helper.form
 
 @Main("Digits") {
@@ -28,14 +29,14 @@
       label = "Last",
       placeholder = "Last")
 
-    @text(contact("phone"),
+    @telephone(
+      phoneNumberField = contact("phone"),
+      phoneTypeField = contact("phoneType"),
       label = "Phone",
-      placeholder = "Phone")
-
-    @select(contact("phoneType"),
-      label = "Phone Type",
+      placeholder = "Phone",
       optionMap = telephoneType,
-      isMultiple = false)
+      phoneNumberHelp = "",
+      phoneTypeHelp = "")
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
